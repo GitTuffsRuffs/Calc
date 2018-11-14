@@ -1,0 +1,11 @@
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\bin\Debug\Calc.exe.config
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\bin\Debug\Calc.exe
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\bin\Debug\Calc.pdb
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\obj\Debug\Calc.csprojAssemblyReference.cache
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\obj\Debug\Calc.Properties.Resources.resources
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\obj\Debug\Calc.csproj.GenerateResource.cache
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\obj\Debug\Calc.csproj.CoreCompileInputs.cache
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\obj\Debug\Calc.exe
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\obj\Debug\Calc.pdb
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\obj\Debug\Calc.Form1.resources
+C:\Users\Madelen\Documents\Visual Studio 2017\Projects\Calc\Calc\obj\Debug\Calc.FormAbout.resources
