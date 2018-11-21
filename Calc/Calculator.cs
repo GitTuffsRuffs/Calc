@@ -8,11 +8,14 @@ namespace Calc
 {
     class Calculator
     {
+        public const int NOP = 0;
         public const int ADD = 1;
         public const int SUB = 2;
         public const int MUL = 3;
         public const int DIV = 4;
-        public const int NOP = 0;
+        public const int CPO = 5;
+        public const int ROT = 6;
+        public const int MUL2 = 7;
 
         int call;
         double sum;
@@ -20,6 +23,7 @@ namespace Calc
 
         //Referens
         CalcForm Form;
+        private object textBoxResult;
 
         //Konstruktor
         public Calculator(CalcForm newForm){
@@ -31,6 +35,13 @@ namespace Calc
             newNr += nr;
             Dislpaly();
         }
+
+        public void RemoveString(string text)
+        {
+            newNr = text.Remove(text.Length - 1);
+            Dislpaly();
+        }
+
         public void Clear(bool ClearAll)
         {
             Form.activateComma();
@@ -41,7 +52,9 @@ namespace Calc
                 sum = 0;
                 call = NOP;
                 Form.setResult("");
-            }else
+                //Form.textBoxHist("");
+            }
+            else
             {
                 Dislpaly();
             }
@@ -60,10 +73,14 @@ namespace Calc
 
             if (call == NOP) // null
             {
-                if (newNr.Length > 0)
+                try
                 {
-                    sum = Convert.ToDouble(newNr);
+                    if (newNr.Length > 0)
+                    {
+                        sum = Convert.ToDouble(newNr);
+                    }
                 }
+                catch { }
                 return;
             }
             else if (call == ADD) // +
@@ -99,7 +116,7 @@ namespace Calc
                 catch { }
             }
             else if (call == DIV)
-            {// /
+            {// /     //FIX DIV WITH 0
                 try
                 {
                     sum = sum / Convert.ToDouble(newNr);
@@ -108,7 +125,39 @@ namespace Calc
                 }
                 catch { }
             }
+            else if (call == CPO)
+            {
+                try
+                {
+                    double input = Convert.ToDouble(newNr);
+                    sum = input * -1;
+                    newNr = "";
+                    Dislpaly();
+                }
+                catch { }
+            }
+            else if (call == ROT)
+            {
+                try
+                {
+                    sum = Math.Sqrt(sum);
+                    newNr = "";
+                    Dislpaly();
+                }
+                catch { }
+            }
+            else if (call == MUL2)
+            {
+                try
+                {
+                    sum = sum * sum;
+                    newNr = "";
+                    Dislpaly();
+                }
+                catch { }
+            }
         }
+
         private void Dislpaly()
         {
             switch (call)
@@ -116,19 +165,36 @@ namespace Calc
                 case ADD:
                     Form.setResult(sum + "+" + newNr);
                     break;
+
                 case SUB:
                     Form.setResult(sum + "-" + newNr);
                     break;
+
                 case MUL:
                     Form.setResult(sum + "*" + newNr);
                     break;
+
                 case DIV:
                     Form.setResult(sum + "/" + newNr);
                     break;
+
+                case CPO:
+                    break;
+
+                case ROT:
+                    Form.setResult("√" + sum);
+                    break;
+
+                case MUL2:
+                    Form.setResult("" + sum);
+                    break;
+
+
                 default:
                     if (newNr.Length > 0)
                     {
                         Form.setResult(newNr);
+                        //Form.setHistory(newNr);
                     }
                     else
                     {
@@ -137,6 +203,5 @@ namespace Calc
                     break;
             }
         }
-
     }
 }

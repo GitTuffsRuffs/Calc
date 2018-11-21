@@ -19,6 +19,12 @@ namespace Calc
         {
             textBoxResult.Text = newText;
         }
+
+        public void setHistory(String newHist)
+        {
+            textBoxHist.AppendText(newHist);
+        }
+
         public void activateComma()
         {
             buttonComma.Enabled = true;
@@ -33,6 +39,12 @@ namespace Calc
         private void buttonAllClear_Click(object sender, EventArgs e)
         {
             Calculator.Clear(true);
+            Dummy.Focus();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            Calculator.RemoveString(textBoxResult.Text);
             Dummy.Focus();
         }
 
@@ -120,6 +132,41 @@ namespace Calc
             Dummy.Focus();
         }
 
+        //Advancet
+        private void buttonRot_Click(object sender, EventArgs e)
+        {
+            Calculator.Operator(Calculator.ROT);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Calculator.Operator(Calculator.MUL2);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        private void buttonConPol_Click(object sender, EventArgs e)
+        {
+            double input = Convert.ToDouble(textBoxResult.Text);
+
+            if (input > 0)
+            {
+                Calculator.AddtoString("-");
+            }
+            else if (input < 0)
+            {
+                Calculator.AddtoString("-");
+            }
+            else
+            {
+                Calculator.AddtoString("????");
+            }
+            Calculator.Operator(Calculator.CPO);
+            Dummy.Focus();
+        }
+
         //Show About me Menu
         private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -150,6 +197,12 @@ namespace Calc
                 Console.WriteLine(e.KeyValue);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

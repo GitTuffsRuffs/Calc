@@ -5,5 +5,6 @@
     {
         void activateComma();
         void setResult(string newText);
+        void setHistory(string newHist);
     }
 }
