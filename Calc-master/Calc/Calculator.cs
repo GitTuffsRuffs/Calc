@@ -16,8 +16,11 @@ namespace Calc
         public const int CPO = 5;
         public const int ROT = 6;
         public const int MUL2 = 7;
+        public const int PRO = 8;
+        public const int DIV1X = 9;
 
         int call;
+        double memmory;
         double sum;
         string newNr;
 
@@ -35,13 +38,11 @@ namespace Calc
             newNr += nr;
             Dislpaly();
         }
-
         public void RemoveString(string text)
         {
             newNr = text.Remove(text.Length - 1);
             Dislpaly();
         }
-
         public void Clear(bool ClearAll)
         {
             Form.activateComma();
@@ -65,6 +66,18 @@ namespace Calc
             call = newCall;
             newNr = "";
             Dislpaly();
+        }
+
+
+        public void MemmoryAdd(string add)
+        {
+            try
+            {
+                memmory = memmory + Convert.ToDouble(add);
+                add = "";
+                DislpalyMem();
+            }
+            catch { }
         }
 
         private void Summarize()
@@ -106,7 +119,6 @@ namespace Calc
             }
             else if (call == MUL)
             {// *
-
                 try
                 {
                     sum = sum * Convert.ToDouble(newNr);
@@ -116,10 +128,11 @@ namespace Calc
                 catch { }
             }
             else if (call == DIV)
-            {// /     //FIX DIV WITH 0
+            {// /     //FIX DIV WITH 0 (somday).
                 try
                 {
                     sum = sum / Convert.ToDouble(newNr);
+                    sum = Math.Round(sum, 2);
                     newNr = "";
                     Dislpaly();
                 }
@@ -129,8 +142,7 @@ namespace Calc
             {
                 try
                 {
-                    double input = Convert.ToDouble(newNr);
-                    sum = input * -1;
+                    sum = sum * -1;
                     newNr = "";
                     Dislpaly();
                 }
@@ -156,6 +168,28 @@ namespace Calc
                 }
                 catch { }
             }
+            else if (call == PRO) //DOSE NOT WORK
+            {
+                try
+                {
+                    sum = (sum * sum) / 100;
+                    newNr = "";
+                    Dislpaly();
+                }
+                catch
+                { }
+            }
+            else if (call == DIV1X)
+            {
+                try
+                {
+                    sum = 1 / sum;
+                    newNr = "";
+                    Dislpaly();
+                }
+                catch
+                { }
+            }
         }
 
         private void Dislpaly()
@@ -175,10 +209,18 @@ namespace Calc
                     break;
 
                 case DIV:
-                    Form.setResult(sum + "/" + newNr);
+                        Form.setResult(sum + "/" + newNr);
                     break;
 
                 case CPO:
+                    if (sum >= 0)
+                    {
+                        Form.setResult("" + sum);
+                    }
+                    else if (sum < 0)
+                    {
+                        Form.setResult("-" + sum);
+                    }
                     break;
 
                 case ROT:
@@ -186,6 +228,10 @@ namespace Calc
                     break;
 
                 case MUL2:
+                    Form.setResult("" + sum);
+                    break;
+
+                case DIV1X:
                     Form.setResult("" + sum);
                     break;
 
@@ -203,5 +249,12 @@ namespace Calc
                     break;
             }
         }
+
+        private void DislpalyMem()
+        {
+            Form.setMemory(memmory + "");
+        }
+
+
     }
 }
