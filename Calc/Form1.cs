@@ -13,16 +13,16 @@ namespace Calc
         {
             InitializeComponent();
             Calculator = new Calculator(this);
-            List<int> memmory_list = new List<int>();
-
-            //Test
-            textBoxMemmory.Text = Calculator.memmory + "";
         }
 
         //Metoder den delar för att vara en Calcform, och kunna prata med Calculatorn
         public void setResult(string newText)
         {
             textBoxResult.Text = newText;
+        }
+        public void addHistory(string newHist)
+        {
+            textBoxHist.Text = newHist + "\r\n" + textBoxHist.Text;
         }
         public void setMemory(string newMemmoiry)
         {
@@ -41,6 +41,9 @@ namespace Calc
         private void buttonAllClear_Click(object sender, EventArgs e)
         {
             Calculator.Clear(true);
+            textBoxHist.Clear();
+            pictureBoxLable.Visible = false;
+            pictureBox2.Visible = false;
             Dummy.Focus();
         }
         private void buttonClear_Click(object sender, EventArgs e)
@@ -50,7 +53,7 @@ namespace Calc
         }
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            Calculator.RemoveString(textBoxResult.Text);
+            Calculator.RemoveString();
             Dummy.Focus();
         }
 
@@ -145,12 +148,6 @@ namespace Calc
         }
 
         //Advancet %, Rot, X2, 1/X
-        private void buttonProcent_Click(object sender, EventArgs e)
-        {
-            Calculator.Operator(Calculator.PRO);
-            Calculator.Operator(Calculator.NOP);
-            Dummy.Focus();
-        } //% ??
         private void buttonRot_Click(object sender, EventArgs e)
         {
             Calculator.Operator(Calculator.ROT);
@@ -173,49 +170,31 @@ namespace Calc
         //MEMORY
         private void buttonMemoryClear_Click(object sender, EventArgs e)
         {
-            textBoxMemmory.Clear();
-            Calculator.memmory = 0;
-
+            Calculator.MemmoryClear();
+            Dummy.Focus();
         }
-
         private void buttonMemoryRead_Click(object sender, EventArgs e)
         {
-            try {
-            Calculator.sum = Convert.ToDouble(textBoxMemmory.Text);
-            }
-            catch {
-                textBoxMemmory.Text = "Empty";
-            }
-            Calculator.Operator(Calculator.NOP);
+            Calculator.MemmoryGet();
             Dummy.Focus();
         }
-
         private void buttonMADD_Click(object sender, EventArgs e)
         {
-            Calculator.MemmoryAdd(textBoxMemmory.Text);
-            Calculator.Operator(Calculator.ADD);
-            Calculator.Operator(Calculator.NOP);
+            Calculator.MemmoryAdd();
             Dummy.Focus();
         }
-
         private void buttonMemmoryRemove_Click(object sender, EventArgs e)
         {
-            Calculator.MemmoryAdd(textBoxMemmory.Text);
-            Calculator.Operator(Calculator.SUB);
-            Calculator.Operator(Calculator.NOP);
+            Calculator.MemmorySub();
             Dummy.Focus();
         }
-
         private void buttonMemorySave_Click(object sender, EventArgs e)
         {
-            Calculator.memmory = Convert.ToDouble(textBoxResult.Text);
-            textBoxMemmory.Text = Calculator.memmory + "";
-            Calculator.Operator(Calculator.NOP);
+            Calculator.MemmorySet();
             Dummy.Focus();
         }
 
         //OTHERE
-
         //Show About me Menu
         private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -247,5 +226,66 @@ namespace Calc
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            pictureBoxLable.Visible = true;
+            pictureBox2.Visible = true;
+
+            Random rand = new Random();
+            int irand = rand.Next(1, 11);
+
+            switch (irand)
+            {
+                case 1:
+                    pictureBoxLable.Text = "Jhon has 32 candy bars,he eats 28.\nWhat dose he have now? Diabetes.";
+                    break;
+
+                case 2:
+                    pictureBoxLable.Text = "Mistakes are proof that you\nare trying. You can do it!";
+                    break;
+
+                case 3:
+                    pictureBoxLable.Text = "Education ain't the learning of facts,\nbut the training of the mind to think.";
+                    break;
+
+                case 4:
+                    pictureBoxLable.Text = "Mathematics is like love, a simple\nidea, but it can get complicated.";
+                    break;
+
+                case 5:
+                    pictureBoxLable.Text = "Parallel lines have got so much in\ncommon, shame they'll never meet. ";
+                    break;
+
+                case 6:
+                    pictureBoxLable.Text = "Even the hardest puzzles have a\nsoulution.";
+                    break;
+
+                case 7:
+                    pictureBoxLable.Text = "In the middle of difficulty\nlise opportunity.";
+                    break;
+
+                case 8:
+                    pictureBoxLable.Text = "Are you cold? Sit in the corners,\nit's always 90 ⊾ degrees!";
+                    break;
+
+                case 9:
+                    pictureBoxLable.Text = "i: Be rational 冂!\n冂: Get reall i! ";
+                    break;
+
+                case 10:
+                    pictureBoxLable.Text = "You have to be ODD\nto be number ONE.";
+                    break;
+
+                default:
+                    pictureBoxLable.Text = "Hello, do you like math?";
+                    break;
+            }
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -16,17 +16,15 @@ namespace Calc
         public const int CPO = 5;
         public const int ROT = 6;
         public const int MUL2 = 7;
-        public const int PRO = 8;
-        public const int DIV1X = 9;
+        public const int DIV1X = 8;
 
         int call;
-        public double memmory = 0;
-        public double sum;
+        double memmory = 0;
+        double sum;
         string newNr;
 
         //Referens
         CalcForm Form;
-        private object textBoxResult;
 
         //Konstruktor
         public Calculator(CalcForm newForm){
@@ -38,26 +36,68 @@ namespace Calc
             newNr += nr;
             Dislpaly();
         }
-        public void RemoveString(string text)
+        public void RemoveString()
         {
-            newNr = text.Remove(text.Length - 1);
-            Dislpaly();
+            if (call != NOP && newNr.Length == 0)
+            {
+                // 11 + => 11
+                call = NOP;
+                Dislpaly();
+                return;
+            }            
+            
+            if (newNr.Length == 0)
+            {
+                // 11 => ""
+                newNr = sum + "";
+                sum = 0;
+            }
+
+            string lastchar = newNr.Substring(newNr.Length - 1);
+            if (lastchar == ",")
+            {
+                Form.activateComma();
+            }
+
+            newNr = newNr.Remove(newNr.Length - 1);
+
+            if (newNr.Length == 0)
+            {
+                Form.setResult("");
+            }else
+            {
+                Dislpaly();
+            }
         }
         public void Clear(bool ClearAll)
         {
-            Form.activateComma();
-            newNr = "";
-            
             if (ClearAll)
             {
-                sum = 0;
+                Form.activateComma();
+                newNr = "";
                 call = NOP;
+                sum = 0;
                 Form.setResult("");
                 //Form.textBoxHist("");
             }
+            else if (newNr.Length > 0)
+            {
+                // 11 + 11 => 11 +
+                Form.activateComma();
+                newNr = "";
+                Dislpaly();
+            }
+            else if (call != NOP)
+            {
+                // 11 + => 11
+                call = NOP;
+                Dislpaly();
+            }
             else
             {
-                Dislpaly();
+                // 11 => ""
+                sum = 0;
+                Form.setResult("");
             }
         }
         public void Operator(int newCall)
@@ -68,20 +108,39 @@ namespace Calc
             Dislpaly();
         }
 
-        public void MemmoryAdd(string add)
+        public void MemmoryAdd()
         {
-            try
-            {
-                memmory += Convert.ToDouble(add);
-                add = "";
-                DislpalyMem();
-            }
-            catch { }
+            Summarize();
+            memmory += sum;
+            Form.setMemory(memmory + "");
+        }
+        public void MemmorySub()
+        {
+            Summarize();
+            memmory -= sum;
+            Form.setMemory(memmory + "");
+        }
+        public void MemmorySet()
+        {
+            Operator(NOP);
+            memmory = sum;
+            Form.setMemory(memmory + "");
+        }
+        public void MemmoryGet()
+        {
+            newNr = memmory + "";
+            Dislpaly();
+        }
+        public void MemmoryClear()
+        {
+            memmory = 0;
+            Form.setMemory("");
         }
 
         private void Summarize()
         {
             Form.activateComma();
+            string history;
 
             if (call == NOP) // null
             {
@@ -99,8 +158,10 @@ namespace Calc
             {
                 try
                 {
+                    history = sum + "+" + newNr;
                     sum = sum + Convert.ToDouble(newNr);
                     newNr = "";
+                    Form.addHistory(history + "=" + sum);
                     Dislpaly();
                 }
                 catch
@@ -110,8 +171,10 @@ namespace Calc
             {
                 try
                 {
+                    history = sum + "-" + newNr;
                     sum = sum - Convert.ToDouble(newNr);
                     newNr = "";
+                    Form.addHistory(history + "=" + sum);
                     Dislpaly();
                 }
                 catch { }
@@ -120,8 +183,10 @@ namespace Calc
             {// *
                 try
                 {
+                    history = sum + "*" + newNr;
                     sum = sum * Convert.ToDouble(newNr);
                     newNr = "";
+                    Form.addHistory(history + "=" + sum);
                     Dislpaly();
                 }
                 catch { }
@@ -130,9 +195,11 @@ namespace Calc
             {// /     //FIX DIV WITH 0 (somday).
                 try
                 {
+                    history = sum + "/" + newNr;
                     sum = sum / Convert.ToDouble(newNr);
                     sum = Math.Round(sum, 2);
                     newNr = "";
+                    Form.addHistory(history + "=" + sum);
                     Dislpaly();
                 }
                 catch { }
@@ -151,8 +218,10 @@ namespace Calc
             {
                 try
                 {
+                    history = "√" + sum ;
                     sum = Math.Sqrt(sum);
                     newNr = "";
+                    Form.addHistory(history + "=" + sum);
                     Dislpaly();
                 }
                 catch { }
@@ -161,36 +230,28 @@ namespace Calc
             {
                 try
                 {
+                    history = sum + "²";
                     sum = sum * sum;
                     newNr = "";
+                    Form.addHistory(history + "=" + sum);
                     Dislpaly();
                 }
                 catch { }
-            }
-            else if (call == PRO) //DOSE NOT WORK
-            {
-                try
-                {
-                    sum = (sum * sum) / 100;
-                    newNr = "";
-                    Dislpaly();
-                }
-                catch
-                { }
             }
             else if (call == DIV1X)
             {
                 try
                 {
+                    history = "1/" + sum;
                     sum = 1 / sum;
                     newNr = "";
+                    Form.addHistory(history + "=" + sum);
                     Dislpaly();
                 }
                 catch
                 { }
             }
         }
-
         private void Dislpaly()
         {
             switch (call)
@@ -248,12 +309,7 @@ namespace Calc
                     break;
             }
         }
-
-        private void DislpalyMem()
-        {
-            Form.setMemory(memmory + "");
-        }
-
+        
 
     }
 }

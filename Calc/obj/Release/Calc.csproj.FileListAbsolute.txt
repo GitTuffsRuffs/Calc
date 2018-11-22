@@ -1,0 +1,10 @@
+C:\Users\Madelen\Desktop\Calc-master\Calc\bin\Release\Calc.exe.config
+C:\Users\Madelen\Desktop\Calc-master\Calc\bin\Release\Calc.exe
+C:\Users\Madelen\Desktop\Calc-master\Calc\bin\Release\Calc.pdb
+C:\Users\Madelen\Desktop\Calc-master\Calc\obj\Release\Calc.FormAbout.resources
+C:\Users\Madelen\Desktop\Calc-master\Calc\obj\Release\Calc.Form1.resources
+C:\Users\Madelen\Desktop\Calc-master\Calc\obj\Release\Calc.Properties.Resources.resources
+C:\Users\Madelen\Desktop\Calc-master\Calc\obj\Release\Calc.csproj.GenerateResource.cache
+C:\Users\Madelen\Desktop\Calc-master\Calc\obj\Release\Calc.csproj.CoreCompileInputs.cache
+C:\Users\Madelen\Desktop\Calc-master\Calc\obj\Release\Calc.exe
+C:\Users\Madelen\Desktop\Calc-master\Calc\obj\Release\Calc.pdb
