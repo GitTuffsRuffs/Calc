@@ -56,17 +56,17 @@
             this.buttonConPol = new System.Windows.Forms.Button();
             this.buttonRot = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.buttonProcent = new System.Windows.Forms.Button();
             this.buttonMulti2 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.buttonDiv1x = new System.Windows.Forms.Button();
+            this.buttonMemoryClear = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.buttonMADD = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBoxMemmory = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -476,12 +476,12 @@
             this.textBoxHist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxHist.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxHist.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxHist.Location = new System.Drawing.Point(285, 74);
+            this.textBoxHist.Location = new System.Drawing.Point(285, 163);
             this.textBoxHist.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxHist.Multiline = true;
             this.textBoxHist.Name = "textBoxHist";
             this.textBoxHist.ReadOnly = true;
-            this.textBoxHist.Size = new System.Drawing.Size(169, 410);
+            this.textBoxHist.Size = new System.Drawing.Size(169, 321);
             this.textBoxHist.TabIndex = 22;
             this.textBoxHist.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -542,23 +542,25 @@
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             this.buttonBack.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             // 
-            // button10
+            // buttonProcent
             // 
-            this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
-            this.button10.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(13, 210);
-            this.button10.Margin = new System.Windows.Forms.Padding(4);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(60, 39);
-            this.button10.TabIndex = 26;
-            this.button10.Text = "&%";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.buttonProcent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonProcent.BackgroundImage")));
+            this.buttonProcent.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
+            this.buttonProcent.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonProcent.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonProcent.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.buttonProcent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProcent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProcent.Location = new System.Drawing.Point(13, 210);
+            this.buttonProcent.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonProcent.Name = "buttonProcent";
+            this.buttonProcent.Size = new System.Drawing.Size(60, 39);
+            this.buttonProcent.TabIndex = 26;
+            this.buttonProcent.Text = "&%";
+            this.buttonProcent.UseVisualStyleBackColor = true;
+            this.buttonProcent.Visible = false;
+            this.buttonProcent.Click += new System.EventHandler(this.buttonProcent_Click);
+            this.buttonProcent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             // 
             // buttonMulti2
             // 
@@ -576,44 +578,46 @@
             this.buttonMulti2.TabIndex = 27;
             this.buttonMulti2.Text = "X²";
             this.buttonMulti2.UseVisualStyleBackColor = true;
-            this.buttonMulti2.Click += new System.EventHandler(this.button11_Click);
+            this.buttonMulti2.Click += new System.EventHandler(this.buttonMulti2_Click);
             this.buttonMulti2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             // 
-            // button12
+            // buttonDiv1x
             // 
-            this.button12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button12.BackgroundImage")));
-            this.button12.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
-            this.button12.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(217, 210);
-            this.button12.Margin = new System.Windows.Forms.Padding(4);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(60, 39);
-            this.button12.TabIndex = 28;
-            this.button12.Text = "1/x";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.buttonDiv1x.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonDiv1x.BackgroundImage")));
+            this.buttonDiv1x.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
+            this.buttonDiv1x.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonDiv1x.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonDiv1x.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.buttonDiv1x.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDiv1x.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiv1x.Location = new System.Drawing.Point(217, 210);
+            this.buttonDiv1x.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonDiv1x.Name = "buttonDiv1x";
+            this.buttonDiv1x.Size = new System.Drawing.Size(60, 39);
+            this.buttonDiv1x.TabIndex = 28;
+            this.buttonDiv1x.Text = "1/x";
+            this.buttonDiv1x.UseVisualStyleBackColor = true;
+            this.buttonDiv1x.Click += new System.EventHandler(this.buttonDiv1x_Click);
+            this.buttonDiv1x.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             // 
-            // button13
+            // buttonMemoryClear
             // 
-            this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
-            this.button13.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
-            this.button13.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(13, 163);
-            this.button13.Margin = new System.Windows.Forms.Padding(4);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(50, 40);
-            this.button13.TabIndex = 29;
-            this.button13.Text = "MC";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.buttonMemoryClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMemoryClear.BackgroundImage")));
+            this.buttonMemoryClear.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
+            this.buttonMemoryClear.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonMemoryClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonMemoryClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.buttonMemoryClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMemoryClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMemoryClear.Location = new System.Drawing.Point(13, 163);
+            this.buttonMemoryClear.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonMemoryClear.Name = "buttonMemoryClear";
+            this.buttonMemoryClear.Size = new System.Drawing.Size(50, 40);
+            this.buttonMemoryClear.TabIndex = 29;
+            this.buttonMemoryClear.Text = "MC";
+            this.buttonMemoryClear.UseVisualStyleBackColor = true;
+            this.buttonMemoryClear.Click += new System.EventHandler(this.buttonMemoryClear_Click);
+            this.buttonMemoryClear.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             // 
             // button14
             // 
@@ -631,25 +635,27 @@
             this.button14.TabIndex = 30;
             this.button14.Text = "MR";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Visible = false;
             this.button14.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             // 
-            // button15
+            // buttonMADD
             // 
-            this.button15.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button15.BackgroundImage")));
-            this.button15.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
-            this.button15.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(121, 163);
-            this.button15.Margin = new System.Windows.Forms.Padding(4);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(50, 40);
-            this.button15.TabIndex = 31;
-            this.button15.Text = "M+";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.buttonMADD.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMADD.BackgroundImage")));
+            this.buttonMADD.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
+            this.buttonMADD.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.buttonMADD.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.buttonMADD.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.buttonMADD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMADD.Location = new System.Drawing.Point(121, 163);
+            this.buttonMADD.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonMADD.Name = "buttonMADD";
+            this.buttonMADD.Size = new System.Drawing.Size(50, 40);
+            this.buttonMADD.TabIndex = 31;
+            this.buttonMADD.Text = "M+";
+            this.buttonMADD.UseVisualStyleBackColor = true;
+            this.buttonMADD.Click += new System.EventHandler(this.buttonMADD_Click);
+            this.buttonMADD.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             // 
             // button16
             // 
@@ -667,6 +673,7 @@
             this.button16.TabIndex = 32;
             this.button16.Text = "M-";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Visible = false;
             this.button16.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             // 
             // button17
@@ -685,23 +692,14 @@
             this.button17.TabIndex = 33;
             this.button17.Text = "MS";
             this.button17.UseVisualStyleBackColor = true;
+            this.button17.Visible = false;
             this.button17.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            // 
-            // listBox1
-            // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 29;
-            this.listBox1.Location = new System.Drawing.Point(461, 74);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(169, 410);
-            this.listBox1.TabIndex = 35;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(457, 50);
+            this.label1.Location = new System.Drawing.Point(284, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 20);
             this.label1.TabIndex = 36;
@@ -711,28 +709,43 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(284, 50);
+            this.label2.Location = new System.Drawing.Point(284, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 37;
             this.label2.Text = "History:";
+            // 
+            // textBoxMemmory
+            // 
+            this.textBoxMemmory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.textBoxMemmory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxMemmory.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxMemmory.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMemmory.Location = new System.Drawing.Point(285, 72);
+            this.textBoxMemmory.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxMemmory.Multiline = true;
+            this.textBoxMemmory.Name = "textBoxMemmory";
+            this.textBoxMemmory.ReadOnly = true;
+            this.textBoxMemmory.Size = new System.Drawing.Size(166, 59);
+            this.textBoxMemmory.TabIndex = 38;
+            this.textBoxMemmory.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 498);
+            this.Controls.Add(this.textBoxMemmory);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
-            this.Controls.Add(this.button15);
+            this.Controls.Add(this.buttonMADD);
             this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
+            this.Controls.Add(this.buttonMemoryClear);
+            this.Controls.Add(this.buttonDiv1x);
             this.Controls.Add(this.buttonMulti2);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.buttonProcent);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonRot);
             this.Controls.Add(this.buttonConPol);
@@ -766,7 +779,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -804,17 +816,17 @@
         private System.Windows.Forms.Button buttonConPol;
         private System.Windows.Forms.Button buttonRot;
         private System.Windows.Forms.Button buttonBack;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button buttonProcent;
         private System.Windows.Forms.Button buttonMulti2;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button buttonDiv1x;
+        private System.Windows.Forms.Button buttonMemoryClear;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button buttonMADD;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxMemmory;
     }
 }
 
