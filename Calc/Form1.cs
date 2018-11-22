@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Calc
@@ -12,6 +13,10 @@ namespace Calc
         {
             InitializeComponent();
             Calculator = new Calculator(this);
+            List<int> memmory_list = new List<int>();
+
+            //Test
+            textBoxMemmory.Text = Calculator.memmory + "";
         }
 
         //Metoder den delar för att vara en Calcform, och kunna prata med Calculatorn
@@ -19,24 +24,37 @@ namespace Calc
         {
             textBoxResult.Text = newText;
         }
+        public void setMemory(string newMemmoiry)
+        {
+            textBoxMemmory.Text = newMemmoiry;
+        }
+        public void setHistory(string newHist)
+        {
+            textBoxHist.AppendText(newHist);
+        }
         public void activateComma()
         {
             buttonComma.Enabled = true;
         }
 
-        //Buttons on form, C & AC
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            Calculator.Clear(false);
-            Dummy.Focus();
-        }
+        //Buttons AC, C, Back.
         private void buttonAllClear_Click(object sender, EventArgs e)
         {
             Calculator.Clear(true);
             Dummy.Focus();
         }
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            Calculator.Clear(false);
+            Dummy.Focus();
+        }
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            Calculator.RemoveString(textBoxResult.Text);
+            Dummy.Focus();
+        }
 
-        //Buttons on form 0-9 & , 
+        //Buttons on form 0-9
         private void button0_Click(object sender, EventArgs e)
         {
             Calculator.AddtoString("0");
@@ -54,7 +72,7 @@ namespace Calc
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Calculator.AddtoString("3");
+            Calculator.AddtoString("3"); 
             Dummy.Focus();
         }
         private void button4_Click(object sender, EventArgs e)
@@ -87,13 +105,8 @@ namespace Calc
             Calculator.AddtoString("9");
             Dummy.Focus();
         }
-        private void buttonComma_Click(object sender, EventArgs e)
-        {
-            buttonComma.Enabled = false;
-            Calculator.AddtoString(",");
-        }
 
-        //Buttons on form: + , - , * , / , =
+        //Buttons on form: + , - , * , / , =, +/-, & ,
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             Calculator.Operator(Calculator.ADD);
@@ -119,6 +132,89 @@ namespace Calc
             Calculator.Operator(Calculator.NOP);
             Dummy.Focus();
         }
+        private void buttonConPol_Click(object sender, EventArgs e)
+        {
+            Calculator.Operator(Calculator.CPO);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+        private void buttonComma_Click(object sender, EventArgs e)
+        {
+            buttonComma.Enabled = false;
+            Calculator.AddtoString(",");
+        }
+
+        //Advancet %, Rot, X2, 1/X
+        private void buttonProcent_Click(object sender, EventArgs e)
+        {
+            Calculator.Operator(Calculator.PRO);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        } //% ??
+        private void buttonRot_Click(object sender, EventArgs e)
+        {
+            Calculator.Operator(Calculator.ROT);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+        private void buttonMulti2_Click(object sender, EventArgs e)
+        {
+            Calculator.Operator(Calculator.MUL2);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+        private void buttonDiv1x_Click(object sender, EventArgs e)
+        {
+            Calculator.Operator(Calculator.DIV1X);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        //MEMORY
+        private void buttonMemoryClear_Click(object sender, EventArgs e)
+        {
+            textBoxMemmory.Clear();
+            Calculator.memmory = 0;
+
+        }
+
+        private void buttonMemoryRead_Click(object sender, EventArgs e)
+        {
+            try {
+            Calculator.sum = Convert.ToDouble(textBoxMemmory.Text);
+            }
+            catch {
+                textBoxMemmory.Text = "Empty";
+            }
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        private void buttonMADD_Click(object sender, EventArgs e)
+        {
+            Calculator.MemmoryAdd(textBoxMemmory.Text);
+            Calculator.Operator(Calculator.ADD);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        private void buttonMemmoryRemove_Click(object sender, EventArgs e)
+        {
+            Calculator.MemmoryAdd(textBoxMemmory.Text);
+            Calculator.Operator(Calculator.SUB);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        private void buttonMemorySave_Click(object sender, EventArgs e)
+        {
+            Calculator.memmory = Convert.ToDouble(textBoxResult.Text);
+            textBoxMemmory.Text = Calculator.memmory + "";
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        //OTHERE
 
         //Show About me Menu
         private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
