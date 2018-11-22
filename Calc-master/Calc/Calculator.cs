@@ -20,8 +20,8 @@ namespace Calc
         public const int DIV1X = 9;
 
         int call;
-        double memmory;
-        double sum;
+        public double memmory = 0;
+        public double sum;
         string newNr;
 
         //Referens
@@ -68,12 +68,11 @@ namespace Calc
             Dislpaly();
         }
 
-
         public void MemmoryAdd(string add)
         {
             try
             {
-                memmory = memmory + Convert.ToDouble(add);
+                memmory += Convert.ToDouble(add);
                 add = "";
                 DislpalyMem();
             }

@@ -14,6 +14,9 @@ namespace Calc
             InitializeComponent();
             Calculator = new Calculator(this);
             List<int> memmory_list = new List<int>();
+
+            //Test
+            textBoxMemmory.Text = Calculator.memmory + "";
         }
 
         //Metoder den delar för att vara en Calcform, och kunna prata med Calculatorn
@@ -166,10 +169,50 @@ namespace Calc
             Calculator.Operator(Calculator.NOP);
             Dummy.Focus();
         }
-        
+
         //MEMORY
+        private void buttonMemoryClear_Click(object sender, EventArgs e)
+        {
+            textBoxMemmory.Clear();
+            Calculator.memmory = 0;
 
+        }
 
+        private void buttonMemoryRead_Click(object sender, EventArgs e)
+        {
+            try {
+            Calculator.sum = Convert.ToDouble(textBoxMemmory.Text);
+            }
+            catch {
+                textBoxMemmory.Text = "Empty";
+            }
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        private void buttonMADD_Click(object sender, EventArgs e)
+        {
+            Calculator.MemmoryAdd(textBoxMemmory.Text);
+            Calculator.Operator(Calculator.ADD);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        private void buttonMemmoryRemove_Click(object sender, EventArgs e)
+        {
+            Calculator.MemmoryAdd(textBoxMemmory.Text);
+            Calculator.Operator(Calculator.SUB);
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
+
+        private void buttonMemorySave_Click(object sender, EventArgs e)
+        {
+            Calculator.memmory = Convert.ToDouble(textBoxResult.Text);
+            textBoxMemmory.Text = Calculator.memmory + "";
+            Calculator.Operator(Calculator.NOP);
+            Dummy.Focus();
+        }
 
         //OTHERE
 
@@ -203,17 +246,6 @@ namespace Calc
                 Console.WriteLine(e.KeyValue);
             }
         }
-               
-        private void buttonMemoryClear_Click(object sender, EventArgs e)
-        {
-            textBoxMemmory.Clear();
-        }
 
-        private void buttonMADD_Click(object sender, EventArgs e)
-        {
-            Calculator.MemmoryAdd(textBoxMemmory.Text);
-            Calculator.Operator(Calculator.NOP);
-            Dummy.Focus();
-        }
     }
 }
